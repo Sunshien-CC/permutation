@@ -16,7 +16,7 @@ for n in range(100, 2100, 100):
     for permutation in permutations:
         permutation2index(permutation)
     end = time.perf_counter()
-    times_p2i.append((end-start))
+    times_p2i.append((end-start)/10.0)
     print("For n={}, {} times permutation2index cost {:.6f}s".format(n, n_repeats, end - start))
 
 for n in range(100, 2100, 100):
@@ -25,7 +25,7 @@ for n in range(100, 2100, 100):
     for i in indexs:
         index2permutation(i, n)
     end = time.perf_counter()
-    times_i2p.append((end-start))
+    times_i2p.append((end-start)/10.0)
     print("For n={}, {} times index2permutation cost {:.6f}s".format(n, n_repeats, end - start))
 
 plt.plot([n for n in range(100,2100,100)],times_p2i)
