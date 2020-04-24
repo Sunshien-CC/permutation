@@ -16,7 +16,7 @@ for n in range(100, 2100, 100):
     for permutation in permutations:
         permutation2index(permutation)
     end = time.perf_counter()
-    times_p2i.append((end-start)/10.0)
+    times_p2i.append((end-start)/n_repeats)
     print("For n={}, {} times permutation2index cost {:.6f}s".format(n, n_repeats, end - start))
 
 for n in range(100, 2100, 100):
@@ -28,15 +28,21 @@ for n in range(100, 2100, 100):
     times_i2p.append((end-start)/10.0)
     print("For n={}, {} times index2permutation cost {:.6f}s".format(n, n_repeats, end - start))
 
-plt.plot([n for n in range(100,2100,100)],times_p2i)
-plt.tick_params(labelsize=20)
-plt.title('p2i',fontsize=20)
-plt.xlabel('N',fontsize=20)
-plt.ylabel('time/s',fontsize=20)
+labelsize = 20
+fontsize = 20
+linewidth = 2
+xlabel = [n for n in range(100,2100,100)]
+line = plt.plot(xlabel, times_p2i, 'r', linewidth=linewidth)
+plt.tick_params(labelsize=labelsize)
+plt.grid(linestyle='--', linewidth=1)
+# plt.title('p2i',fontsize=fontsize)
+plt.xlabel('n', fontsize=fontsize)
+plt.ylabel('Time/s', fontsize=fontsize)
 plt.show()
-plt.plot([n for n in range(100,2100,100)],times_i2p)
-plt.tick_params(labelsize=20)
-plt.title('i2p',fontsize=20)
-plt.xlabel('N',fontsize=20)
-plt.ylabel('time/s',fontsize=20)
+plt.plot(xlabel, times_i2p, 'r', linewidth=linewidth)
+plt.tick_params(labelsize=labelsize)
+plt.grid(linestyle='--', linewidth=1)
+# plt.title('i2p',fontsize=fontsize)
+plt.xlabel('n', fontsize=fontsize)
+plt.ylabel('Time/s', fontsize=fontsize)
 plt.show()
